@@ -1,0 +1,40 @@
+﻿@using SoundEquipment.Models
+@model ProductPO
+@{
+    ViewBag.Title = "CreateProduct";
+}
+
+<h2>Create new product</h2>
+
+@using (Html.BeginForm("CreateProduct", "Product", FormMethod.Post))
+{
+    @Html.LabelFor(model => Model.Name)
+    @Html.TextBoxFor(model => Model.Name, new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.TypeOfEquipment, "Type of equipment")
+    @Html.DropDownListFor(model => Model.TypeOfEquipment,
+    new SelectList(new List<SelectListItem>
+    {
+        new SelectListItem { Text = "Microphone", Value = "Microphone" },
+        new SelectListItem { Text = "Preamp", Value = "Preamp" },
+        new SelectListItem { Text = "Mixer", Value = "Mixer" },
+        new SelectListItem { Text = "Headphones", Value = "Headphones" },
+    },
+    "Value", "Text"
+            ),
+    new { @class = "form-control" })
+    
+    @Html.LabelFor(model => Model.Manufacturer)
+    
+    <div class="form-group">
+        @Html.TextBoxFor(model => Model.Manufacturer, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => Model.Manufacturer, "", new { @class = "text-danger" })
+    </div>
+
+    @Html.LabelFor(model => Model.ModelYear, "Model year")
+    @Html.TextBoxFor(model => Model.ModelYear, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => Model.ModelYear, "", new { @class = "text-danger" })
+
+    <input type="submit" value="Create new product"/>
+}
+

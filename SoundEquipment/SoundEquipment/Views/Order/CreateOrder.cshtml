@@ -1,0 +1,77 @@
+﻿@using SoundEquipment.Models
+@model OrderPO
+@{
+
+}
+
+<h2>Create new order</h2>
+
+@using (Html.BeginForm("CreateOrder", "Order", FormMethod.Post))
+{
+    @Html.LabelFor(model => Model.ProductID)
+    @Html.DropDownListFor(model => Model.ProductID, Model.ProductsDropDown,
+                    "-- Please choose a Product --", new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.Quantity)
+    @Html.DropDownListFor(model => Model.Quantity,
+            new SelectList(new List<SelectListItem>
+        {
+new SelectListItem { Text = "1", Value = "1" },
+new SelectListItem { Text = "2", Value = "2" },
+new SelectListItem { Text = "3", Value = "3" },
+new SelectListItem { Text = "4", Value = "4" },
+new SelectListItem { Text = "5", Value = "5" },
+new SelectListItem { Text = "6", Value = "6" },
+new SelectListItem { Text = "7", Value = "7" },
+new SelectListItem { Text = "8", Value = "8" },
+new SelectListItem { Text = "9", Value = "9" },
+new SelectListItem { Text = "10", Value = "10" },
+            },
+            "Value", "Text"),
+        new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.DistributionCenter, "Distribution center")
+    @Html.DropDownListFor(model => Model.DistributionCenter,
+                                                         new SelectList(new List<SelectListItem>
+                                                         {
+new SelectListItem { Text = "Colorado", Value = "Colorado" },
+new SelectListItem { Text = "Maine", Value = "Maine" },
+new SelectListItem { Text = "Texas", Value = "Texas" },
+new SelectListItem { Text = "Washington", Value = "Washington" },
+new SelectListItem { Text = "CascadeDeleteDistributionCenter", Value = "CascadeDeleteDistributionCenter" },
+                                                         },
+                                                         "Value", "Text"
+                                                                 ),
+                                                         new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.DateOfOrder, "Date of order")
+    @Html.TextBoxFor(model => Model.DateOfOrder, new { @class = "form-control datepicker" })
+
+    @Html.LabelFor(model => Model.ExpectedArrivalDate, "Expected arrival date")
+    @Html.TextBoxFor(model => Model.ExpectedArrivalDate, new { @class = "form-control datepicker" })
+
+    <input type="submit" value="Create new order" />
+
+    //Datepicker setup
+    <script type="text/javascript">
+        $(function () {
+            $('.datepicker').datepicker();
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+}
+
+
+
+
+
+
+
+
+
+

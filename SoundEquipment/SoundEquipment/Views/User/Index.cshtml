@@ -1,0 +1,67 @@
+﻿@using SoundEquipment.Models
+@model List<UserPO>
+@{
+    ViewBag.Title = "User index";
+}
+
+<h2>User index</h2>
+<br />
+@if (Session["RoleID"] != null && ((int)Session["RoleID"] == 3))
+{
+    @Html.ActionLink("Create new user", "CreateUser", "User")
+}
+<br />
+<br />
+<br />
+<table class="table">
+    <thead>
+    <th>RoleID</th>
+    <th>Username</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>E-mail</th>
+    <th>Phone number</th>
+    </thead>
+    <tbody>
+        @foreach (UserPO presentationObject in Model)
+        {
+            <tr>
+                <td>
+                    @presentationObject.RoleID
+                </td>
+                <td>
+                    @presentationObject.Username
+                </td>
+                <td>
+                    @presentationObject.FirstName
+                </td>
+                <td>
+                    @presentationObject.LastName
+                </td>
+                <td>
+                    @presentationObject.Email
+                </td>
+                <td>
+                    @presentationObject.PhoneNumber
+                </td>
+                <td>
+                    @if (Session["RoleID"] != null && ((int)Session["RoleID"] == 3))
+                    {
+                        @Html.ActionLink("Update", "UpdateUser", "User", new { userID = presentationObject.UserID }, null)
+                    }
+                </td>
+
+                <td>
+                    @if (Session["RoleID"] != null && ((int)Session["RoleID"] == 3))
+                    {
+                        @Html.ActionLink("Delete", "DeleteUser", "User", new { userID = presentationObject.UserID },
+                             new { onclick = "return confirm('Are you sure you want to delete this user?');" })
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

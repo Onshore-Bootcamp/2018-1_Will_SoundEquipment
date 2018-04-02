@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                var message = '@TempData["SuccessMessage"].ToString()';
+            </text>
+
+        }
+        else
+        {
+            <text>
+                var message = undefined;
+            </text>
+        }
+        if (message != undefined) {
+            alert(message);
+        }
+    });
+</script>
+
+<br />
+
+<p style="font-size: 35px">Sound Equipment Retailer Homepage</p>
+
+
+

@@ -1,0 +1,71 @@
+﻿@using SoundEquipment.Models
+@model List<OrderPO>
+@{
+    ViewBag.Title = "Order index";
+}
+<h2>Order index</h2>
+<br />
+@if (Session["RoleId"] != null && ((int)Session["RoleID"] == 2 || (int)Session["RoleID"] == 3))
+{
+    @Html.ActionLink("Create new order", "CreateOrder", "Order")
+}
+<br />
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Date of order</th>
+            <th>Expected arrival date</th>
+            <th>Distribution center</th>
+            <th>Product name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (OrderPO presentationObject in Model)
+        {
+            <tr>
+                <td>
+                    @presentationObject.Quantity
+                </td>
+                <td>
+                    @presentationObject.DateOfOrder
+                </td>
+                <td>
+                    @presentationObject.ExpectedArrivalDate
+                </td>
+                <td>
+                    @presentationObject.DistributionCenter
+                </td>
+                <td>
+                    @*Replaced ProductID with Name:*@
+                    @presentationObject.Name
+                </td>
+                <td>
+                    @if (Session["RoleID"] != null && ((int)Session["RoleID"] == 1 || (int)Session["RoleID"] == 2 || (int)Session["RoleID"] == 3))
+                    {
+                        @Html.ActionLink("Update", "UpdateOrder", "Order", new { orderID = presentationObject.OrderID, }, null);
+                    }
+
+                </td>
+
+                <td>
+                    @if (Session["RoleID"] != null && ((int)Session["RoleID"] == 3))
+                    {
+                        @Html.ActionLink("Delete", "DeleteOrder", "Order", new { orderID = presentationObject.OrderID },
+                   new { onclick = "return confirm('Are you sure you want to delete this order?');" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*<script src="confirmDelete.js"></script>*@
+
+@*<script>
+    function confirmDelete()
+</script>*@
+
+

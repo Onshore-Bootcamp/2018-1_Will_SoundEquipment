@@ -1,0 +1,42 @@
+﻿@using SoundEquipment.Models
+@model UserPO
+@{
+    ViewBag.Title = "UpdateUser";
+}
+
+@using (Html.BeginForm("UpdateUser", "User", FormMethod.Post))
+{
+    <h2>Update user</h2>
+
+    @Html.HiddenFor(model => model.UserID)
+
+    @Html.LabelFor(model => model.RoleID)
+    @Html.DropDownListFor(model => Model.RoleID,
+        new SelectList(new List<SelectListItem>
+        {
+new SelectListItem { Text = "Regular user", Value = "1" },
+    new SelectListItem { Text = "Power user", Value = "2" },
+    new SelectListItem { Text = "Administrator", Value = "3" },
+        },
+        "Value", "Text"),
+        new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.Username)
+    @Html.TextBoxFor(model => Model.Username, new { @class = "form-control" })
+    
+    @Html.LabelFor(model => Model.FirstName, "First name")
+    @Html.TextBoxFor(model => Model.FirstName, new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.LastName, "Last name")
+    @Html.TextBoxFor(model => Model.LastName, new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.Email)
+    @Html.TextBoxFor(model => Model.Email, new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.PhoneNumber, "Phone number")
+    @Html.TextBoxFor(model => Model.PhoneNumber, new { @class = "form-control" })
+
+    <br />
+    <input type="submit" value="Update user" />
+}
+

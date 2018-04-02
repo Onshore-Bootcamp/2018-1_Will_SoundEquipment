@@ -1,0 +1,52 @@
+﻿@using SoundEquipment.Models
+@model ProductPO
+@{
+    ViewBag.Title = "Update product";
+}
+
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post))
+{
+    <h1>Update product</h1>
+
+    @Html.HiddenFor(model => Model.ProductID)
+
+    <tr>
+        @Html.LabelFor(model => Model.Name)
+    </tr>
+    <tr>
+        @Html.TextBoxFor(model => Model.Name, new { @class = "form-control" })
+    </tr>
+    <tr>
+        @Html.LabelFor(model => Model.TypeOfEquipment, "Type of equipment")
+    </tr>
+    <tr>
+        @Html.DropDownListFor(model => Model.TypeOfEquipment,
+         new SelectList(new List<SelectListItem>
+         {
+new SelectListItem { Text = "Microphone", Value = "Microphone" },
+new SelectListItem { Text = "Preamp", Value = "Preamp" },
+new SelectListItem { Text = "Mixer", Value = "Mixer" },
+new SelectListItem { Text = "Headphones", Value = "Headphones" },
+         },
+         "Value", "Text"
+                 ),
+         new { @class = "form-control" })
+    </tr>
+    <tr>
+        @Html.LabelFor(model => Model.Manufacturer)
+    </tr>
+    <tr>
+        @Html.TextBoxFor(model => Model.Manufacturer, new { @class = "form-control" })
+    </tr>
+    <tr>
+        @Html.LabelFor(model => Model.ModelYear, "Model year")
+    </tr>
+    <tr>
+        @Html.TextBoxFor(model => Model.ModelYear, new { @class = "form-control" })
+    </tr>
+
+    <input type="submit" value="Update product" />
+}
+
+
+

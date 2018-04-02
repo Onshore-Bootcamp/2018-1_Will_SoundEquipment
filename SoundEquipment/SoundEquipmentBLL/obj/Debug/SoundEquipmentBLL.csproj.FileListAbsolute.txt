@@ -1,0 +1,6 @@
+C:\Users\Will\source\repos\SoundEquipment\SoundEquipmentBLL\bin\Debug\SoundEquipmentBLL.dll
+C:\Users\Will\source\repos\SoundEquipment\SoundEquipmentBLL\bin\Debug\SoundEquipmentBLL.pdb
+C:\Users\Will\source\repos\SoundEquipment\SoundEquipmentBLL\obj\Debug\SoundEquipmentBLL.csproj.CoreCompileInputs.cache
+C:\Users\Will\source\repos\SoundEquipment\SoundEquipmentBLL\obj\Debug\SoundEquipmentBLL.dll
+C:\Users\Will\source\repos\SoundEquipment\SoundEquipmentBLL\obj\Debug\SoundEquipmentBLL.pdb
+C:\Users\Will\source\repos\SoundEquipment\SoundEquipmentBLL\obj\Debug\SoundEquipmentBLL.csprojResolveAssemblyReference.cache

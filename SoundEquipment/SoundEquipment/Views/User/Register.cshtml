@@ -1,0 +1,37 @@
+﻿@using SoundEquipment.Models
+@model UserPO
+@{
+    ViewBag.Title = "CreateUser";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm("Register", "User", FormMethod.Post))
+{
+    @Html.LabelFor(model => Model.Username)
+    @Html.TextBoxFor(model => Model.Username, new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.Password)
+    @Html.PasswordFor(model => Model.Password, new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.PasswordConfirm)
+    @Html.PasswordFor(model => Model.PasswordConfirm, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => Model.PasswordConfirm)
+
+    <br />
+
+    @Html.LabelFor(model => Model.FirstName, "First name")
+    @Html.TextBoxFor(model => Model.FirstName, new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.LastName, "Last name")
+    @Html.TextBoxFor(model => Model.LastName, new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.Email)
+    @Html.TextBoxFor(model => Model.Email, new { @class = "form-control" })
+
+    @Html.LabelFor(model => Model.PhoneNumber, "Phone number")
+    @Html.TextBoxFor(model => Model.PhoneNumber, new { @class = "form-control" })
+
+    <input type="submit" value="Register" />
+}
+

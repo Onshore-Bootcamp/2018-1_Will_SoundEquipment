@@ -1,0 +1,59 @@
+﻿@using SoundEquipment.Models
+@model List<ProductPO>
+@{
+    ViewBag.Title = "Product index";
+}
+
+<h2>Product index</h2>
+<br />
+@if (Session["RoleId"] != null && ((int)Session["RoleID"] == 2 || (int)Session["RoleID"] == 3))
+{
+    @Html.ActionLink("Create new product", "CreateProduct", "Product")
+}
+<br />
+<br />
+<p>The two most common manufacturers in the products index are: @ViewBag.mostCommonManufacturer</p>
+<br />
+<br />
+<table class="table">
+    <thead>
+    <th>Name</th>
+    <th>Type of equipment</th>
+    <th>Manufacturer</th>
+    <th>Model year</th>
+    </thead>
+    <tbody>
+        @foreach (ProductPO presentationObject in Model)
+        {
+            <tr>
+                <td>
+                    @presentationObject.Name
+                </td>
+                <td>
+                    @presentationObject.TypeOfEquipment
+                </td>
+                <td>
+                    @presentationObject.Manufacturer
+                </td>
+                <td>
+                    @presentationObject.ModelYear
+                </td>
+                <td>
+                    @if (Session["RoleID"] != null && ((int)Session["RoleID"] == 1 || (int)Session["RoleID"] == 2 || (int)Session["RoleID"] == 3))
+                    {
+                        @Html.ActionLink("Update", "UpdateProduct", "Product", new { productID = presentationObject.ProductID }, null)
+                    }
+                </td>
+
+                <td>
+                    @if (Session["RoleID"] != null && ((int)Session["RoleID"] == 3))
+                    {
+                        @Html.ActionLink("Delete", "DeleteProduct", "Product", new { productID = presentationObject.ProductID },
+                                           new { onclick = "return confirm('Are you sure you want to delete this product?');" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
